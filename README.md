@@ -144,8 +144,9 @@ Options:
 ***none***: Do not implement normalization
 
 **`--imputation`:**
-***scImpute***: Imputing missing value od data matrix following filtering and normalization steps and this function is performed using scImpute R package
+***scImpute***: Imputing missing value od data matrix following filtering and normalization steps and this function is performed using scImpute R package.
 ***none***: Do not implement imputation.
+
 **`--data_type`:**
 ***count***:
 ***TPM***:
