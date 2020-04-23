@@ -436,10 +436,10 @@ pipeline_cal = function(expr_path,
   ##################################################
 
   cells = c()
-  if(ncol(cluster_mat) > 8000){
+  if(ncol(cluster_mat) > 10000){
     ## extract some cells if the mat is too big
     print("extract subset cells")
-    pst = 8000/ncol(cluster_mat)
+    pst = 10000/ncol(cluster_mat)
     #print(dim(mat))
     #mat_new = matrix(nrow=nrow(mat))
     for(clust in unique(cluster_idents)){
