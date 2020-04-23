@@ -142,12 +142,14 @@ Options:
 ***RC:*** Relative counts. Feature counts output for each cell are is divided by the total counts for that cell and multiplied by 1e4 (for TPM/CPM/FPKM/RPKM this value is 1e6).
 ***scran:*** The normalization strategy for scRNA-seq is implemented based on the deconvolutional size factor using the scran R package. Detials see [scran](https://github.com/MarioniLab/scran)
 ***none***: Do not implement normalization
+
 **`--imputation`:**
 ***scImpute***: Imputing missing value od data matrix following filtering and normalization steps and this function is performed using scImpute R package
 ***none***: Do not implement imputation.
 **`--data_type`:**
 ***count***:
 ***TPM***:
+
 **`--pathway_database`:**
 when "--species" is "homo", "--pathway_database" can be select as follow:
 ***kegg***: 
@@ -179,6 +181,7 @@ when "--species" is mus, "--pathway_database" can be select as follow:
 ***c5.mf***:
 ***c5.cc***:
 ***other***:
+
 **`--cluster_method`:**
 ***seurat***:
 ***hclust***:
