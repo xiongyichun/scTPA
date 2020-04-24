@@ -68,15 +68,7 @@ if (!requireNamespace("dbscan", quietly = TRUE))
 ```
 ### Test scTPA
 ```
-Rscript /path/to/you/scTPA/scTPA.R -f /path/to/you/scTPA/test/test.csv \
-                                                           --work_dir /path/to/you/scTPA/ \
-                                                           --species homo \
-                                                           --pathway_database kegg \
-                                                           --para_size 1 \
-                                                           --pas_method gsva \
-                                                           --cluster_method seurat \
-                                                           --pic_type png \
-                                                           -o /path/output/results \
+Rscript /path/to/you/scTPA-master/R/scTPA.R -f /path/to/you/scTPA-master/test/expression.csv --cellType /path/to/you/scTPA-master/test/cell_type.csv --work_dir /path/to/you/scTPA-master/ --species homo --pathway_database kegg --para_size 1 -o /path/to/you/scTPA-master/results/
 ```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
 ### Command
@@ -144,51 +136,41 @@ Options:
 ***none***: Do not implement normalization
 
 **`--imputation`:**
-***scImpute***: Imputing missing value od data matrix following filtering and normalization steps and this function is performed using scImpute R package.
+***scImpute***: Imputing missing value of data matrix following filtering and normalization steps and this function is performed using scImpute R package
 ***none***: Do not implement imputation.
 
 **`--data_type`:**
-***count***:
-***TPM***:
+***count***: Discrete Data.
+***TPM***: Continuous data.
 
 **`--pathway_database`:**
 when "--species" is "homo", "--pathway_database" can be select as follow:
-***kegg***: 
-***reactome***:
-***biocarta***:
-***smpdb***:
-***humancyc***:                        
-***nci***:
-***panther***:
-***pharmgkb***:
-***acsn2***:
-***rb***:
-***c2.cgp***:
-***c2.cp***:
-***c4.cgn***:
-***c4.cm***:
-***c5.bp***:
-***c5.mf***:
-***c5.cc***:
-***c6.all***:
-***c7.all***:
-***h.all***:
+***kegg***: An encyclopaedia for genes reaction and regulation. [KEGG](https://www.genome.jp/kegg/). 
+***reactome***: A curated database for biomolecular pathways. [Reactome](https://reactome.org/). 
+***biocarta***: A pathway database for gene regulation. [BioCarta](https://www.liebertpub.com/doi/pdf/10.1089/152791601750294344). 
+***smpdb***: A small molecules pathway database. [SMPDB](https://smpdb.ca/). 
+***humancyc***: A curated pathway database of human metabonomics. [HumanCyc](https://humancyc.org/). 
+***panther***: A curated pathway database for protein annotation through evolutionary relationship. [PANTHER](http://www.pantherdb.org/). 
+***pharmgkb***: A curated pathway database for pharmacogenomics. [pharmGKB](https://www.pharmgkb.org/). 
+***acsn2***: A web-based resource depicting signalling and regulatory molecular processes in cancer cell and tumor microenvironment. [ACSN v2.0](https://acsn.curie.fr/ACSN2/ACSN2.html). 
+***rb***: A curated map of molecular interactions about retinoblastoma protein (RB/RB1). [RB-Pathways](http://bioinfo-out.curie.fr/projects/rbpathway/). 
+***h.all***: Hallmark gene sets. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c2.cgp***: Chemical and genetic perturbations. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c2.cp***: 
+***c4.cgn***: Cancer gene neighborhoods. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c4.cm***: Cancer modules. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c5.bp***: GO biological process. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c5.mf***: GO cellular component. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c5.cc***: GO molecular function. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c6.all***: Oncogenic signatures. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+***c7.all***: Immunologic signatures. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
 when "--species" is mus, "--pathway_database" can be select as follow:
-***kegg***: 
-***reactome***:
-***smpdb***:
-***pathbank***:
-***c5.bp***:
-***c5.mf***:
-***c5.cc***:
-***other***:
-
-**`--cluster_method`:**
-***seurat***:
-***hclust***:
-***simlr***:
-***kmeans***:
-***kmedoids***:
-### Output
+***kegg***: An encyclopaedia for genes reaction and regulation. [KEGG](https://www.genome.jp/kegg/). 
+***reactome***: A curated database for biomolecular pathways. [Reactome](https://reactome.org/). 
+***smpdb***: A small molecules pathway database. [SMPDB](https://smpdb.ca/). 
+***c5.bp***: GO biological process. [GSKB](http://ge-lab.org/gskb/). 
+***c5.mf***: GO cellular component. [GSKB](http://ge-lab.org/gskb/). 
+***c5.cc***: GO molecular function. [GSKB](http://ge-lab.org/gskb/). 
+***other***: Including "Location", "HPO", "STITCH", "MPO", "T3DB", "PID", "MethyCancer" and "MethCancerDB*, details see [table](http://ge-lab.org/gskb/Table%201-sources.pdf). [GSKB](http://ge-lab.org/gskb/). 
 
 
