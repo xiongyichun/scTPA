@@ -245,8 +245,8 @@ load_expr = function(expr_file,
   }else{
     cat("Do not filter genes","\n")
   }
-  print("###################3###################")
-  print(genes_name[1:10])
+  #print("###################3###################")
+  #print(genes_name[1:10])
   gc()
   ### convert character matrix to numeric matrix
   #if(pas_method == 'gsva' && imputation != 'none' && class(expr[1,1]) == 'character'){
@@ -389,11 +389,11 @@ load_expr = function(expr_file,
   }
   #print("#####################5###############")
   #print(genes_name[1:10])
-  print(dim(expr))
+  #print(dim(expr))
   #print(class(expr))
-  print(length(genes_name))
+  #print(length(genes_name))
   #rint(class(genes_name))
-  print(length(cells_name))
+  #print(length(cells_name))
   #print(cell_type[1:5])
   return (list(expr = expr,cell_type=cell_type,genes_name=genes_name,cells_name=cells_name))
 
@@ -507,7 +507,7 @@ prepa_seuratOb = function(mat,
   tsne_seurat = as.data.frame(Embeddings(obSeurat[['tsne']]))
   tsne_seurat[,'cell_type'] = Idents(obSeurat)
   #print(dim(cell_name_frame))
-  print(dim(tsne_seurat))
+  #print(dim(tsne_seurat))
   tsne_seurat = cbind(cell_name_frame, tsne_seurat)
   #rownames(tsne_seurat) = tsne_seurat[,1]
   write.csv(format(tsne_seurat, digits = 3), file.path(out_dir,'tsne_3D.csv'),quote=F, row.names=F)
@@ -555,7 +555,7 @@ plot_cluster = function(obSeurat,
   #print(method)
   options(bitmapType='cairo')
   method = match.arg(method)
-  if(method == 'tsne'){
+  #if(method == 'tsne'){
     #print(out_dir)
     #print(dim(obSeurat))
     p = DimPlot(object = obSeurat, group.by = 'ident', reduction='tsne',label=T)
@@ -571,7 +571,7 @@ plot_cluster = function(obSeurat,
       stop("--pic_type must be png or pdf")
     }
 
-  }else if(method =='umap'){
+  #}else if(method =='umap'){
 
     p = DimPlot(object = obSeurat, group.by = 'ident', reduction='umap', label=T)
     if(pic_type == 'png'){
@@ -585,7 +585,7 @@ plot_cluster = function(obSeurat,
     }else{
       stop("--pic_type must be png or pdf")
     }
-  }
+  #}
 }
 
 
@@ -623,6 +623,8 @@ parseAllMarkers = function(obSeurat,
                            out_dir,
                            para_size,
                            expr,
+						   genes_name,
+						   cells_name,
                            cell_type,
                            path_list,
                            pic_type,
@@ -656,7 +658,8 @@ parseAllMarkers = function(obSeurat,
   all_markers_write = cbind(pathway_frame, all_markers[,1:(ncol(all_markers)-1)])
   genes = get_geneLis(paths = path_new_names,
                       path_lis = path_list,
-                      expr = rownames(expr[]))
+                      expr = genes_name)
+  #print(genes[1])
   #print(length(genes))
   all_markers_write['geneList'] = genes
   #print(dim(all_markers_write))
@@ -719,14 +722,17 @@ parseAllMarkers = function(obSeurat,
   #expr = expr[,colnames(obSeurat)]
   #print(head(cell_type))
   expr = scale(expr[,cells])
+  rownames(expr) = genes_name
+  colnames(expr) = cells_name[cells]
   cell_type = as.data.frame(Idents(obSeurat)[cells])
   #print("after seurat ...")
   #print(head(cell_type))
   #print(dim(cell_type))
   #print(dim(expr))
   gc()
-  print("zscore of expression success, dimensions: ")
-  print(dim(expr))
+  #print("zscore of expression success, dimensions: ")
+  #print(dim(expr))
+  #print(expr[1:5,1:5])
 
   x_angle=0
 
@@ -759,6 +765,10 @@ parseAllMarkers = function(obSeurat,
                       path_dir,
                       feature_name,
                       pic_type)
+    #print(expr[1:5,1:5])
+    #print(path_list[[feature_name]])
+	#print(cell_type)
+	#print(feature_name)
     genes_heatmap(expr,
                   path_list[[feature_name]],
                   cell_type,
