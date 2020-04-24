@@ -83,13 +83,13 @@ FindAllMarkers_me <- function(
       ...
     ),
     error = function(e) {
-    print("error in cal markers")
+      #print("error in cal markers")
       NULL
     }
     )
   }
 
-  print("aaaaaaaaaaaaaaaaaaaaaaaaaa")
+  #print("aaaaaaaaaaaaaaaaaaaaaaaaaa")
 
   mclapp = get('mclapply', envir=getNamespace('parallel'))
   options(mc.cores = para_size)
