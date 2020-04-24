@@ -4,9 +4,9 @@ scTPA is a web tool for single-cell transcriptome analysis and annotation based 
 ### What can scTPA do
 * pre-processing of scRNA-seq data
 * calculating pathway activity score
-* dimension reduction of scRNA-seq data
+* dimension reduction
 * clustering of cell population by different methods
-* finding significantly activate pathway in supervised pr unsupervised manner
+* finding significant activated pathway in supervised or unsupervised manner
 * overview of associated gene expression profiles in pathways
 ## Usage
 ### Install
@@ -91,11 +91,11 @@ Options:
     --species=SPECIES
         species. "homo" or "mus"[default= homo]
     --imputation=IMPUTATION
-        Imputation method. "scImpute", "magic" or "none"[default= none]
+        Imputation method. "scImpute", or "none"[default= none]
     --data_type=FILE
         data type of gene expression profile，"TPM" or "count"[default= TPM]
     --pathway_database=PATHWAY_DATABASE
-        pathway databasem, detials see http://github[default= kegg]
+        pathway database, detials see https://github.com/sulab-wmu/scTPA[default= kegg]
     --user_pathway=USER_PATHWAY
         user defined pathway file，only for gmt format[default = NULL]
     --pas_method=PAS_METHOD
@@ -113,7 +113,7 @@ Options:
     --min_pts=MIN_PTS
         parameter in DBSCAN[default= 3]
     --dims=DIMS
-        number of PCA dimensionas used for TSNE or UMAP[default= 20]
+        number of PCA dimensions used for TSNE or UMAP[default= 20]
     --marker_method=FIND_MAKER_METHOD
         method of finding siginificant markers[default= wilcox]
     --logFC_thre=THRESHOLD_LOGFC
