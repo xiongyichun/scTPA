@@ -38,14 +38,14 @@ mus_paths = c('kegg','reactome','pathbank','smpdb',
 option_list = list(
   make_option(c("-f", "--file"),
               type = "character",
-              default = NULL,
+              default = "NULL",
               dest = 'file',
               help = "gene expression profile, genes X cells",
               metavar = "file"),
 
               make_option(c("--cellType"),
               type = "character",
-              default = NULL,
+              default = "NULL",
               dest = 'cellType',
               help = "cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names.[default= %default]",
               metavar = "cellType"),
@@ -108,14 +108,14 @@ option_list = list(
 
               make_option(c("--user_pathway"),
               type = "character",
-              default = NULL,
+              default = "NULL",
               dest = "user_pathway",
               help = "user defined pathway file，only for gmt format[default = %default]",
               metavar = "user_pathway"),
 
               make_option(c("--pas_method"),
               type = "character",
-              default = "ssgsea",
+              default = "gsva",
               dest = 'pas_method',
               help = "method for calculating PAS[default= %default]",
               metavar = "pas_method"),
@@ -198,7 +198,7 @@ option_list = list(
 
               make_option(c("-o","--out_dir"),
               type = "character",
-              default = NULL,
+              default = "NULL",
               dest = "out_dir",
               help = "output folder[default= %default]",
               metavar="out_dir")
@@ -242,13 +242,14 @@ pipeline_cal = function(expr_path,
 
   src_dir = file.path(work_dir,'src')
   pathway_dir = file.path(work_dir,'data/pathways')
+  r_dir = file.path(work_dir,'R')
 
-  source(file.path(src_dir,'visualization.R'))
+  source(file.path(r_dir,'visualization.R'))
 
-  source(file.path(src_dir,'PAS.R'))
-  source(file.path(src_dir,'function.R'))
-  source(file.path(src_dir,'markers.R'))
-  source(file.path(src_dir,'clustering.R'))
+  source(file.path(r_dir,'PAS.R'))
+  source(file.path(r_dir,'function.R'))
+  source(file.path(r_dir,'markers.R'))
+  source(file.path(r_dir,'clustering.R'))
 
 
   out_dir = paste0(out_dir, '/')
@@ -294,16 +295,16 @@ pipeline_cal = function(expr_path,
                    pas_method = pas_method,
                    work_dir = work_dir)
 
-  expr = as.matrix(ret[[1]])
-  cell_type = ret[[2]]
+  expr = ret$expr
+  cell_type = ret$cell_type
+  genes_name = ret$genes_name
+  cells_name = ret$cells_name
+  #print("####################6##############")
+  #print(genes_name[1:10])
 
   rm(ret, min_cells, min_features, normalize_method, data_type)
   gc()
-  rownames(expr) = toupper(rownames(expr))
-  #expr = conveEnsembl(expr, species)
-  genes_name = rownames(expr)
-  cells_name = colnames(expr)
-  expr = as_FBM(expr)
+  genes_name = toupper(genes_name)
 
 
   ##################################################
@@ -481,6 +482,7 @@ pipeline_cal = function(expr_path,
   rm(cluster_mat)
   gc()
 
+  plot_cluster(obSeurat = obSeurat_pas, out_dir=out_dir,pic_type = pic_type)
 
   cat("Ploting cluster picture successful\n")
 
@@ -502,6 +504,8 @@ pipeline_cal = function(expr_path,
                     out_dir = out_dir,
                     para_size = para_size,
                     expr = expr,
+					genes_name = genes_name,
+                    cells_name = cells_name,
                     cell_type = cluster_idents,
                     path_list = path_list,
                     pic_type = pic_type,
@@ -515,6 +519,8 @@ pipeline_cal = function(expr_path,
                     out_dir = out_dir,
                     para_size = para_size,
                     expr = expr,
+					genes_name = genes_name,
+                    cells_name = cells_name,
                     cell_type = cluster_idents,
                     path_list = path_list,
                     pic_type = pic_type,
