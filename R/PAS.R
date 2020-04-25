@@ -418,7 +418,7 @@ zscore_noWeight = function(expr,
                       p.combine = 'rbind',
                       ncores = n_cores)
 
-  Z = as_FBM(Z)
+  #Z = as_FBM(Z)
 
   cl=NA
   tryCatch({
@@ -429,9 +429,9 @@ zscore_noWeight = function(expr,
              cl = parallel::makeCluster(n_cores)
            })
   parallel::clusterExport(cl, c("Z"))
-  print(1)
+  #print(1)
   doParallel::registerDoParallel(cl)
-  print(2)
+  #print(2)
 
   pas = foreach(gset = gset.idx.list,
                 .combine = rbind) %dopar% {
@@ -442,7 +442,7 @@ zscore_noWeight = function(expr,
                     colSums(Z[gset,],na.rm = T) / sqrt_len_gset
                   }
                 }
-  stopImplicitCluster()
+  doParallel::stopImplicitCluster()
 
   if(nrow(pas) == length(gset.idx.list) && ncol(pas) == expr$ncol){
     rownames(pas) = names(gset.idx.list)
@@ -486,16 +486,20 @@ plage_noWeight = function(expr,
                       p.combine = 'rbind',
                       ncores = n_cores)
 
-  Z = as_FBM(Z)
+  #Z = as_FBM(Z)
 
-  tryCatch(cl = makeCluster(n_cores,type="FORK"),
-           error = function(e){
-             cl = makeCluster(n_cores)
-           })
+  cl=NA
+  tryCatch({
+    cl = parallel::makeCluster(n_cores,type="FORK")
+    print(cl)},
+    error = function(e){
+      warning("type of FORK is only legal for unix-based platform")
+      cl = parallel::makeCluster(n_cores)
+    })
   parallel::clusterExport(cl, c("Z"))
-  print(1)
+  #print(1)
   doParallel::registerDoParallel(cl)
-  print(2)
+  #print(2)
 
   pas = foreach(gset = gset.idx.list,
                 .combine = rbind) %dopar% {
@@ -506,7 +510,7 @@ plage_noWeight = function(expr,
                     svd(Z[gset,])$v[,1]
                   }
                 }
-  stopImplicitCluster()
+  doParallel::stopImplicitCluster()
 
   if(nrow(pas) == length(gset.idx.list) && ncol(pas) == expr$ncol){
     rownames(pas) = names(gset.idx.list)
