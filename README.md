@@ -1,4 +1,4 @@
-## What is scTPA
+## What is [scTPA](http://sctpa.bio-data.cn/sctpa)
 ### Introduction
 scTPA is a web tool for single-cell transcriptome analysis and annotation based on biological pathway activation in human and mice. We collected a large number of biological pathways with different functional and taxonomic classifications, which facilitates the identification of key pathway signatures for cell type annotation and interpretation. 
 ### What can scTPA do
@@ -144,6 +144,7 @@ Options:
 ***TPM***: Continuous data.
 
 **`--pathway_database`:**
+
 when "--species" is "homo", "--pathway_database" can be select as follow:
 ***kegg***: An encyclopaedia for genes reaction and regulation. [KEGG](https://www.genome.jp/kegg/). 
 ***reactome***: A curated database for biomolecular pathways. [Reactome](https://reactome.org/). 
@@ -164,6 +165,7 @@ when "--species" is "homo", "--pathway_database" can be select as follow:
 ***c5.cc***: GO molecular function. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
 ***c6.all***: Oncogenic signatures. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
 ***c7.all***: Immunologic signatures. [MSigDB](https://www.gsea-msigdb.org/gsea/msigdb/index.jsp). 
+
 when "--species" is mus, "--pathway_database" can be select as follow:
 ***kegg***: An encyclopaedia for genes reaction and regulation. [KEGG](https://www.genome.jp/kegg/). 
 ***reactome***: A curated database for biomolecular pathways. [Reactome](https://reactome.org/). 
