@@ -96,14 +96,14 @@ option_list = list(
               type = "character",
               default = 'TPM',
               dest = 'data_type',
-              help = "data type of gene expression profile，TPM or count[default= %default]",
+              help = "data type of gene expression profile，"TPM" or "count"[default= %default]",
               metavar = "file"),
 
               make_option(c("--pathway_database"),
               type = "character",
               default = "kegg",
               dest = 'pathway_database',
-              help = "pathway data base[default= %default]",
+              help = "pathway database, detials see https://github.com/sulab-wmu/scTPA[default= %default]",
               metavar = "pathway_database"),
 
               make_option(c("--user_pathway"),
@@ -117,7 +117,7 @@ option_list = list(
               type = "character",
               default = "gsva",
               dest = 'pas_method',
-              help = "method for calculating PAS[default= %default]",
+              help = "method for calculating PAS. "gsva", "ssgsea", "zscore" or "plage"[default= %default]",
               metavar = "pas_method"),
 
               make_option(c("--para_size"),
@@ -131,7 +131,7 @@ option_list = list(
               type = "character",
               default = "seurat",
               dest = 'cluster_method',
-              help = "clustering method[default= %default]",
+              help = "clustering method. "seurat", "hclust", "simlr", "kmedoids", "kmeans" or "dbscan"[default= %default]",
               metavar = "cluster_method"),
 
               make_option(c("--seurat_dims"),

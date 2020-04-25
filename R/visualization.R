@@ -764,11 +764,11 @@ feature_vio = function(obSeurat,
     labs(x="cell types",y="pathway activity score",title=NULL)
 
   if(pic_type == 'png'){
-    png(paste0(feature_name,'.vil.png'))
+    png(file.path(path_dir,paste0(feature_name,'.vil.png')))
     print(p)
     dev.off()
   }else if(pic_type == 'pdf'){
-    pdf(paste0(feature_name,'.vil.pdf'))
+    pdf(paste0(file.path(path_dir,feature_name,'.vil.pdf')))
     print(p)
     dev.off()
   }else{
@@ -791,11 +791,11 @@ feature_highlight = function(obSeurat,
     labs(title=NULL)
 
   if(pic_type == 'png'){
-    png(paste0(feature_name,'.fet.png'))
+    png(file.path(path_dir,paste0(feature_name,'.fet.png')))
     print(p)
     dev.off()
   }else if(pic_type == 'pdf'){
-    pdf(paste0(feature_name,'.fet.pdf'))
+    pdf(file.path(path_dir,paste0(feature_name,'.fet.pdf')))
     print(p)
     dev.off()
   }else{
@@ -832,11 +832,11 @@ genes_heatmap = function(expr,
            clustering_method = "ward.D2")
 
   if(pic_type == 'png'){
-    png(paste0(feature_name,'.het.png'))
+    png(file.path(path_dir,paste0(feature_name,'.het.png')))
     print(p)
     dev.off()
   }else if(pic_type == 'pdf'){
-    pdf(paste0(feature_name,'.het.pdf'))
+    pdf(file.path(path_dir,paste0(feature_name,'.het.pdf')))
     print(p)
     dev.off()
   }else{

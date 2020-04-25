@@ -659,7 +659,7 @@ parseAllMarkers = function(obSeurat,
   genes = get_geneLis(paths = path_new_names,
                       path_lis = path_list,
                       expr = genes_name)
-  #print(genes[1])
+  print(genes[1])
   #print(length(genes))
   all_markers_write['geneList'] = genes
   #print(dim(all_markers_write))
@@ -730,9 +730,9 @@ parseAllMarkers = function(obSeurat,
   #print(dim(cell_type))
   #print(dim(expr))
   gc()
-  #print("zscore of expression success, dimensions: ")
-  #print(dim(expr))
-  #print(expr[1:5,1:5])
+  print("zscore of expression success, dimensions: ")
+  print(dim(expr))
+  print(expr[1:5,1:5])
 
   x_angle=0
 
