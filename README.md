@@ -3,7 +3,6 @@
 scTPA is a web tool for single-cell transcriptome analysis and annotation based on biological pathway activation in human and mice. We collected a large number of biological pathways with different functional and taxonomic classifications, which facilitates the identification of key pathway signatures for cell type annotation and interpretation.
 
 ### What can scTPA do
-* Pre-processing of scRNA-seq data
 * Calculating pathway activity score of single cell
 * Dimension reduction
 * Clustering of cell population by different methods
