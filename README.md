@@ -91,7 +91,7 @@ Options:
     --species=SPECIES
         species. "homo" or "mus"[default= homo]
     --imputation=IMPUTATION
-        Imputation method. "scImpute", or "none"[default= none]
+        Imputation method. "scImpute" or "none"[default= none]
     --data_type=FILE
         data type of gene expression profile，"TPM" or "count"[default= TPM]
     --pathway_database=PATHWAY_DATABASE
