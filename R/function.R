@@ -209,7 +209,7 @@ load_expr = function(expr_file,
   ### filtering cells
   if (min_features > 0) {
     print("start filtering cells")
-    nfeatures = colSums(expr)
+    nfeatures = colSums(expr>0)
     index = as.integer(which(x = nfeatures >= min_features))
     if(length(index) < ncol(expr)){
       expr = expr[, ..index]
@@ -228,10 +228,10 @@ load_expr = function(expr_file,
 
   if (min_cells > 0) {
     print("start filtering genes")
-    num_cells = rowSums(x = expr)
+    num_cells = rowSums(expr>0)
     index = as.integer(which(x = num_cells >= min_cells))
     if(length(index) < nrow(expr)){
-      expr = expr[index]
+      expr = expr[index,]
       genes_name = genes_name[index]
     }
     rm(num_cells, index, min_cells)
