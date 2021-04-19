@@ -75,7 +75,8 @@ The results can be found at the directory **test/test_output**,  The file organi
 ```
 
 ### Help Information
-```Rscript src/scTPA.R -h
+`
+Rscript src/scTPA.R -h
 Options:
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
@@ -124,7 +125,8 @@ Options:
     -o OUT_DIR, --out_dir=OUT_DIR
         Output folder. [default= NULL]
     -h, --help
-        Show this help message and exit```
+        Show this help message and exit
+`
 
 #### Details for Specific Parameters
 **`--normalize`:**
