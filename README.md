@@ -12,10 +12,9 @@ scTPA is a web tool for single-cell transcriptome analysis and annotation based 
 ## Usage
 ### Install
 * **step1 Download scTPA**
-scTPA can be download directly  from `Download ZIP` button. Alternatively, scTPA can be installed through github: enter the directory where you would like to install scTPA and run
+scTPA local application can be download directly by
 ```
-git clone https://github.com/yupenghe/methylpy.git
-cd scTPA/
+wget http://sctpa.bio-data.cn:8888/sctpa/resources/scTPA_local-v7.zip
 ```
 * **step2 Install dependent R packages**
 For using scTPA, user must install following packages,:
