@@ -19,7 +19,6 @@ unzip scTPA_local-v7.zip
 cd scTPA_local-v7
 ```
 * **step2 Install dependent R packages**
-
 To install this packages, start "R" and enter:
 ```
 install.packages('p2data', repos='https://kharchenkolab.github.io/drat/', type='source')
@@ -30,7 +29,6 @@ library(devtools)
 library(usethis)
 devtools::install_local("dependencies/pagoda2-v0.1.1-master.zip")
 
-##
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("parallel")
@@ -52,11 +50,19 @@ BiocManager::install("AUCell")
 BiocManager::install("Cairo")
 BiocManager::install("scde")
 ```
-
+* **step3 Install dependent Python packages**
+```
+pip install pandas==0.25.3
+pip install numpy
+pip install json
+pip install clustergrammer
+pip install seaborn
+pip install multiprocessing
+```
 
 ### Test scTPA
 ```
-Rscript /path/to/you/scTPA-master/R/scTPA.R -f /path/to/you/scTPA-master/test/expression.csv --cellType /path/to/you/scTPA-master/test/cell_type.csv --work_dir /path/to/you/scTPA-master/ --species homo --pathway_database kegg --para_size 1 -o /path/to/you/scTPA-master/results/
+Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output
 ```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
 ### Command
