@@ -61,7 +61,7 @@ pip install multiprocessing
 ### Usage
 ##### Example
 `
-Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output
+Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --species homo --data_type count -o test/test_output
 `
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
 The results can be found at the directory **test/test_output**,  The file organization is as follows: 
@@ -77,9 +77,20 @@ The results can be found at the directory **test/test_output**,  The file organi
 ### Help Information
 ```
 Rscript src/scTPA.R -h
-Options:
+```
+
+# Required Options:
+```
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
+    --data_type=FILE
+        Data type of gene expression profile，Available options are 'TPM' or 'count'. 'count' indicate that the expression profile is non-negative UMI or read count. 'TPM' indicate that the expression profile is normalized FPKM, RPKM, CPM or TPM. [default= TPM]
+    --species=SPECIES
+        "Species. Available options are 'homo' or 'mus'. [default= homo]
+```
+
+# Required Options:
+```
     --cellType=CELLTYPE
         Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
     --normalize=NORMALIZE_METHOD
@@ -88,12 +99,9 @@ Options:
         Genes must be detected within a minimum number of cells. Used for filtering genes. [default= 3]
     --min_features=MIN_FEATURES
         Cells must have at least the minimum number of genes. Used for filtering cells. [default= 200]
-    --species=SPECIES
-        "Species. Available options are 'homo' or 'mus'. [default= homo]
     --imputation=IMPUTATION
         Imputation method. Available options are 'scImpute' or 'none'. 'scImpute': impute scRNA-seq profile using scImpute R package. [default= none]
-    --data_type=FILE
-        Data type of gene expression profile，Available options are 'TPM' or 'count'. 'count' indicate that the expression profile is non-negative UMI or read count. 'TPM' indicate that the expression profile is normalized FPKM, RPKM, CPM or TPM. [default= TPM]
+    
     --pathway_database=PATHWAY_DATABASE
         Pathway database. Avalible database are avalible on https://github.com/sulab-wmu/scTPA#details [default= kegg]
     --user_pathway=USER_PATHWAY
