@@ -9,15 +9,14 @@ scTPA is the local tool for scTPA (http://sctpa.bio-data.cn/sctpa) single-cell t
 * Comparison analysis of the associated gene expression profiles of pathways
 
 # Installation
-### Install
-##### **Step 1. Download scTPA**
+### **Step 1. Download scTPA**
 scTPA local application can be download directly by
 ```
 wget http://sctpa.bio-data.cn:8888/sctpa/resources/scTPA_local-v7.zip
 unzip scTPA_local-v7.zip
 cd scTPA_local-v7
 ```
-##### **Step 2. Install dependent R packages**
+### **Step 2. Install dependent R packages**
 To install this packages, start "R" and enter:
 ```
 install.packages('p2data', repos='https://kharchenkolab.github.io/drat/', type='source')
@@ -49,7 +48,7 @@ BiocManager::install("AUCell")
 BiocManager::install("Cairo")
 BiocManager::install("scde")
 ```
-##### **Step 3. Install dependent Python packages**
+### **Step 3. Install dependent Python packages**
 ```
 pip install pandas==0.25.3
 pip install numpy
