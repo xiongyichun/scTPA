@@ -10,14 +10,14 @@ scTPA is the local tool for scTPA (http://sctpa.bio-data.cn/sctpa) single-cell t
 
 # Installation
 ### Install
-##### step1 Download scTPA
+##### **Step 1. Download scTPA**
 scTPA local application can be download directly by
 ```
 wget http://sctpa.bio-data.cn:8888/sctpa/resources/scTPA_local-v7.zip
 unzip scTPA_local-v7.zip
 cd scTPA_local-v7
 ```
-##### step2 Install dependent R packages
+##### **Step 2. Install dependent R packages**
 To install this packages, start "R" and enter:
 ```
 install.packages('p2data', repos='https://kharchenkolab.github.io/drat/', type='source')
@@ -49,7 +49,7 @@ BiocManager::install("AUCell")
 BiocManager::install("Cairo")
 BiocManager::install("scde")
 ```
-##### step3 Install dependent Python packages
+##### **Step 3. Install dependent Python packages**
 ```
 pip install pandas==0.25.3
 pip install numpy
@@ -60,11 +60,16 @@ pip install multiprocessing
 ```
 # Usage
 ### Example
-`
-Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --species homo --data_type count -o test/test_output
-`
+
+```
+Rscript src/scTPA.R -f example/e1_scRNA_UMI_count.csv --cellType example/e1_cell_type.csv --data_type count --species homo -o test/test_output_e1
+```
+```
+Rscript src/scTPA.R -f example/e2_melanoma.csv --species homo --data_type TPM -o test/test_output_e2
+
+```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
-The results can be found at the directory **test/test_output**,  The file organization is as follows: 
+The results can be found at the directory **test/test_output_e1** or **test/test_output_e2**,  The file organization is as follows: 
 ```
 +--app.exe          //double click to visualize the results.
 +--data
@@ -79,7 +84,7 @@ The results can be found at the directory **test/test_output**,  The file organi
 Rscript src/scTPA.R -h
 ```
 
-##### Required Options:
+##### **Required Options:**
 ```
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
@@ -89,7 +94,7 @@ Rscript src/scTPA.R -h
         "Species. Available options are 'homo' or 'mus'. [default= homo]
 ```
 
-##### Required Options:
+##### **Required Options:**
 ```
     --cellType=CELLTYPE
         Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
