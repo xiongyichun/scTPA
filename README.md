@@ -64,7 +64,7 @@ pip install multiprocessing
 Rscript src/scTPA.R -f example/e1_scRNA_UMI_count.csv --cellType example/e1_cell_type.csv --data_type count --species homo -o test/test_output_e1
 ```
 ```
-Rscript src/scTPA.R -f example/e2_melanoma.csv --species homo --data_type TPM -o test/test_output_e2
+Rscript src/scTPA.R -f example/e2_melanoma.csv --cellType NULL --species homo --data_type TPM -o test/test_output_e2
 
 ```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
@@ -91,12 +91,13 @@ Rscript src/scTPA.R -h
         Data type of gene expression profile，Available options are 'TPM' or 'count'. 'count' indicate that the expression profile is non-negative UMI or read count. 'TPM' indicate that the expression profile is normalized FPKM, RPKM, CPM or TPM. [default= TPM]
     --species=SPECIES
         "Species. Available options are 'homo' or 'mus'. [default= homo]
+    --cellType=CELLTYPE
+        Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
 ```
 
 ##### **Optional parameters:**
 ```
-    --cellType=CELLTYPE
-        Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
+
     --normalize=NORMALIZE_METHOD
         Methods used for normalization. Available options are 'none', 'log', 'CLR', 'RC' 'sctrancform' or 'scran'. 'log', 'CLR' 'RC' and 'sctrancform': The normalization methods from Seurat R package. 'scran': The normalization strategy for scRNA-seq is implemented based on the deconvolutional size factor using the scran R package. "log", "CLR", "RC" or "scran"[default= none]
     --min_cells=MIN_CELLS
