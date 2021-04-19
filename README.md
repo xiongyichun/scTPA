@@ -60,9 +60,7 @@ pip install multiprocessing
 ```
 ### Usage
 ##### Example
-```
-Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output
-```
+```Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
 The results can be found at the directory **test/test_output**,  The file organization is as follows: 
 ```
@@ -75,8 +73,7 @@ The results can be found at the directory **test/test_output**,  The file organi
 ```
 
 ### Help Information
-```
-Rscript src/scTPA.R -h
+```Rscript src/scTPA.R -h
 Options:
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
@@ -125,8 +122,7 @@ Options:
     -o OUT_DIR, --out_dir=OUT_DIR
         Output folder. [default= NULL]
     -h, --help
-        Show this help message and exit
-```
+        Show this help message and exit```
 
 #### Details for Specific Parameters
 **`--normalize`:**
