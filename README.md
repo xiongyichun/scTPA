@@ -15,57 +15,45 @@ scTPA is a web tool for single-cell transcriptome analysis and annotation based 
 scTPA local application can be download directly by
 ```
 wget http://sctpa.bio-data.cn:8888/sctpa/resources/scTPA_local-v7.zip
+unzip scTPA_local-v7.zip
+cd scTPA_local-v7
 ```
 * **step2 Install dependent R packages**
-For using scTPA, user must install following packages,:
->Seurat
->foreach
->bigstatsr
->data.table
-dplyr
-scales
-ggplot2
-cowplot
-pheatmap
 
 To install this packages, start "R" and enter:
 ```
-if (!requireNamespace(c("Seurat","bigstatsr","data.table","foreach","dplyr","scales","ggplot2","cowplot","pheatmap"), quietly = TRUE))
-    install.packages(c("Seurat","bigstatsr","data.table","foreach","dplyr","scales","ggplot2","cowplot","pheatmap"))
-```
-* **step3 Install optional R packages**
-If user want to use some specialized method in scTPA, the following R packages are required.
-1. `scran` for "scran" normalization method
-2. `scImpute` for "scImpute" imputation method
-3. `SIMLR` for "simlr" clustering method
-4. `dbscan` for "dbscan" clustering method 
+install.packages('p2data', repos='https://kharchenkolab.github.io/drat/', type='source')
+install.packages("devtools")
+install.packages("rJava")
+library(rJava)
+library(devtools)
+library(usethis)
+devtools::install_local("dependencies/pagoda2-v0.1.1-master.zip")
 
-**scran**
-```
+##
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-if (!requireNamespace("scran", quietly = TRUE))
-    BiocManager::install("scran")
+BiocManager::install("parallel")
+BiocManager::install("optparse")
+BiocManager::install("scImpute")
+BiocManager::install("scran")
+BiocManager::install("scater")
+BiocManager::install("dplyr")
+BiocManager::install("Seurat")
+BiocManager::install("cluster")
+BiocManager::install("fpc")
+BiocManager::install("SIMLR")
+BiocManager::install("this.path")
+BiocManager::install("scales")
+BiocManager::install("ggplot2")
+BiocManager::install("cowplot")
+BiocManager::install("pheatmap")
+BiocManager::install("AUCell")
+BiocManager::install("Cairo")
+BiocManager::install("scde")
 ```
-**scImpute**
-```
-if (!requireNamespace("devtools", quietly = TRUE))
-    install.packages("devtools")
-if (!requireNamespace("scImpute", quietly = TRUE))
-    devtools::install_github("Vivianstats/scImpute")
-```
-**SIMLR**
-```
-if (!requireNamespace("devtools", quietly = TRUE))
-    install.packages("devtools")
-if (!requireNamespace("scImpute", quietly = TRUE))
-    devtools::install_github("Vivianstats/scImpute")
-```
-**dbscan**
-```
-if (!requireNamespace("dbscan", quietly = TRUE))
-    BiocManager::install("dbscan")
-```
+
+
 ### Test scTPA
 ```
 Rscript /path/to/you/scTPA-master/R/scTPA.R -f /path/to/you/scTPA-master/test/expression.csv --cellType /path/to/you/scTPA-master/test/cell_type.csv --work_dir /path/to/you/scTPA-master/ --species homo --pathway_database kegg --para_size 1 -o /path/to/you/scTPA-master/results/
