@@ -71,7 +71,7 @@ Rscript src/scTPA.R -f example/e2_melanoma.csv --species homo --data_type TPM -o
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
 The results can be found at the directory **test/test_output_e1** or **test/test_output_e2**,  The file organization is as follows: 
 ```
-+--app.exe          //double click to visualize the results.
++--app.exe          //double click to visualize the results within Windows system.
 +--data
    +--app.js
    +--bin
