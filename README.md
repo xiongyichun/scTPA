@@ -60,15 +60,15 @@ pip install seaborn
 pip install multiprocessing
 ```
 
-### Test scTPA
+### Example
 ```
 Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output
 ```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
-### Command
 
+### Help Information
 ```
-Rscript /path/to/you/scTPA/scTPA.R -h
+Rscript src/scTPA.R -h
 Options:
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
@@ -119,7 +119,8 @@ Options:
     -h, --help
         Show this help message and exit
 ```
-#### Details
+
+#### Details for Specific Parameter
 **`--normalize`:**
 ***log:*** Log transform. Feature counts output for each cell is divided by the total counts for that cell and multiplied by 1e4. This is then natural-log transformed.
 ***CLR:*** Centered log ratio. A commonly used Compositional Data Analysis (CoDA) transformation method.
@@ -136,7 +137,6 @@ Options:
 ***TPM***: Continuous data.
 
 **`--pathway_database`:**
-
 when "--species" is "homo", "--pathway_database" can be select as follow:
 ***kegg***: An encyclopaedia for genes reaction and regulation. [KEGG](https://www.genome.jp/kegg/). 
 ***reactome***: A curated database for biomolecular pathways. [Reactome](https://reactome.org/). 
