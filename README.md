@@ -1,5 +1,4 @@
 # scTPA local application
-### Introduction
 scTPA is the local tool for scTPA (http://sctpa.bio-data.cn/sctpa) single-cell transcriptome analysis and annotation based on biological pathway activation in human and mice. We collected a large number of biological pathways with different functional and taxonomic classifications, which facilitates the identification of key pathway signatures for cell type annotation and interpretation.
 
 ### What can scTPA do
