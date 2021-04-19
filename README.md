@@ -75,7 +75,7 @@ The results can be found at the directory **test/test_output**,  The file organi
 ```
 
 ### Help Information
-`
+```
 Rscript src/scTPA.R -h
 Options:
     -f FILE, --file=FILE
@@ -126,7 +126,7 @@ Options:
         Output folder. [default= NULL]
     -h, --help
         Show this help message and exit
-`
+```
 
 #### Details for Specific Parameters
 **`--normalize`:**
