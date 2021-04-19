@@ -78,53 +78,51 @@ Once the program has run successfully, a series of results files and folders wil
 Rscript /path/to/you/scTPA/scTPA.R -h
 Options:
     -f FILE, --file=FILE
-        gene expression profile, genes X cells
+       Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
     --cellType=CELLTYPE
-        cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names.[default= NULL]
-    --work_dir=WORK_DIR
-        Workshop direction. [default= ./]
+        Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
     --normalize=NORMALIZE_METHOD
-        methods used for normalization. "log", "CLR", "RC" or "scran"[default= none]
+        Methods used for normalization. Available options are 'none', 'log', 'CLR', 'RC' 'sctrancform' or 'scran'. 'log', 'CLR' 'RC' and 'sctrancform': The normalization methods from Seurat R package. 'scran': The normalization strategy for scRNA-seq is implemented based on the deconvolutional size factor using the scran R package. "log", "CLR", "RC" or "scran"[default= none]
     --min_cells=MIN_CELLS
-        genes must be in a minimum number of cells. Used for filtering genes[default= 3]
+        Genes must be detected within a minimum number of cells. Used for filtering genes. [default= 3]
     --min_features=MIN_FEATURES
-        cells must have at least the minimum number of genes. Used for filtering cells[default= 200]
+        Cells must have at least the minimum number of genes. Used for filtering cells. [default= 200]
     --species=SPECIES
-        species. "homo" or "mus"[default= homo]
+        "Species. Available options are 'homo' or 'mus'. [default= homo]
     --imputation=IMPUTATION
-        Imputation method. "scImpute" or "none"[default= none]
+        Imputation method. Available options are 'scImpute' or 'none'. 'scImpute': impute scRNA-seq profile using scImpute R package. [default= none]
     --data_type=FILE
-        data type of gene expression profile，"TPM" or "count"[default= TPM]
+        Data type of gene expression profile，Available options are 'TPM' or 'count'. 'count' indicate that the expression profile is non-negative UMI or read count. 'TPM' indicate that the expression profile is normalized FPKM, RPKM, CPM or TPM. [default= TPM]
     --pathway_database=PATHWAY_DATABASE
-        pathway database, detials see https://github.com/sulab-wmu/scTPA[default= kegg]
+        Pathway database. Avalible database are avalible on https://github.com/sulab-wmu/scTPA#details [default= kegg]
     --user_pathway=USER_PATHWAY
-        user defined pathway file，only for gmt format[default = NULL]
+        Optional. User defined pathway file in gmt format. [default = NULL]
     --pas_method=PAS_METHOD
-        method for calculating PAS. "gsva", "ssgsea", "zscore" or "plage"[default= ssgsea]
+        PAS (pathway activation signatures) transformation method. Available options are 'Pagoda2', 'Vision', 'AUCell', 'gsva', 'ssgsea', 'zscore' or 'plage'. [default= ssgsea]
     --para_size=PARA_SIZE
-        number of kernels used for parallel[default= 4]
+        Number of kernels used for parallel computation. [default= 4]
     --cluster_method=CLUSTER_METHOD
-        clustering method. "seurat", "hclust", "simlr", "kmedoids", "kmeans" or "dbscan"[default= seurat]
+        Clustering method. Available options are 'seurat', 'hclust', 'simlr', 'kmedoids', 'kmeans' or 'dbscan'. [default= seurat]
     --seurat_dims=SEURAT_DIMS
-        dimensions used in Seurat clustering[default= 8]
+        Dimensions of PCA used in Seurat FindNeighbors method. [default= 8]
     --seurat_resolution=SEURAT_RESOLUTION
-        resolution used for Seurat clustering[default= 0.5]
+        Resolution used in Seurat FindClusters method. [default= 0.5]
     --k_cluster=K_CLUSTER
-        number of clusters, useless if clustering method is Seurat or dbscan[default= 5]
+        Number of clusters. Used for clustering methods except Seurat and dbscan. [default= 5]
     --min_pts=MIN_PTS
-        parameter in DBSCAN[default= 3]
+        Number of nearest neighbors used in dbscan clustering. [default= 3]
     --dims=DIMS
-        number of PCA dimensions used for TSNE or UMAP[default= 20]
+        Number of PCA dimensions used for TSNE or UMAP. [default= 20]
     --marker_method=FIND_MAKER_METHOD
-        method of finding siginificant markers[default= wilcox]
+        Method for finding siginificant markers. [default= wilcox]
     --logFC_thre=THRESHOLD_LOGFC
-        threshold of logFC (Detail see Seurat)[default= 0.25]
+        logfc.threshold Limit testing to genes which show, on average, at least X-fold difference (log-scale) between the two groups of cells. This parameter was same as the 'logfc.threshold' of FindAllMarkers in Seurat R package. [default= 0.25]
     --min_pct=MIN_PCT
-        only test genes that are detected in a minimum fraction of min.pct cells in either of the two populations.[default= 0.1]
-    --pic_type=PIC_TYPE
-        type of picture, png or pdf [default= png]
+        Only test genes that are detected in a minimum fraction of min.pct cells in either of the two populations will be retain. This parameter was same as the 'min.pct' of FindAllMarkers in Seurat R package. [default= 0.1]
+    --shown_markers=SHOWN_MAEKERS
+        The number of markers for each cell type used for heatmap visualization. [default= 3]
     -o OUT_DIR, --out_dir=OUT_DIR
-        output folder[default= NULL]
+        Output folder. [default= NULL]
     -h, --help
         Show this help message and exit
 ```
