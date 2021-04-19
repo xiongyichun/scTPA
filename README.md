@@ -8,7 +8,7 @@ scTPA is the local tool for scTPA (http://sctpa.bio-data.cn/sctpa) single-cell t
 * Identifying significantly activated pathways of cell clusterings
 * Comparison analysis of the associated gene expression profiles of pathways
 
-# Installation and Usage
+# Installation
 ### Install
 ##### step1 Download scTPA
 scTPA local application can be download directly by
@@ -58,8 +58,8 @@ pip install clustergrammer
 pip install seaborn
 pip install multiprocessing
 ```
-### Usage
-##### Example
+# Usage
+### Example
 `
 Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --species homo --data_type count -o test/test_output
 `
@@ -79,7 +79,7 @@ The results can be found at the directory **test/test_output**,  The file organi
 Rscript src/scTPA.R -h
 ```
 
-# Required Options:
+##### Required Options:
 ```
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
@@ -89,7 +89,7 @@ Rscript src/scTPA.R -h
         "Species. Available options are 'homo' or 'mus'. [default= homo]
 ```
 
-# Required Options:
+##### Required Options:
 ```
     --cellType=CELLTYPE
         Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
