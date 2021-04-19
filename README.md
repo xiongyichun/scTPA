@@ -11,14 +11,14 @@ scTPA is the local tool for scTPA (http://sctpa.bio-data.cn/sctpa) single-cell t
 
 # Installation and Usage
 ### Install
-#####step1 Download scTPA
+##### step1 Download scTPA
 scTPA local application can be download directly by
 ```
 wget http://sctpa.bio-data.cn:8888/sctpa/resources/scTPA_local-v7.zip
 unzip scTPA_local-v7.zip
 cd scTPA_local-v7
 ```
-#####step2 Install dependent R packages
+##### step2 Install dependent R packages
 To install this packages, start "R" and enter:
 ```
 install.packages('p2data', repos='https://kharchenkolab.github.io/drat/', type='source')
@@ -50,7 +50,7 @@ BiocManager::install("AUCell")
 BiocManager::install("Cairo")
 BiocManager::install("scde")
 ```
-#####step3 Install dependent Python packages
+##### step3 Install dependent Python packages
 ```
 pip install pandas==0.25.3
 pip install numpy
@@ -59,8 +59,8 @@ pip install clustergrammer
 pip install seaborn
 pip install multiprocessing
 ```
-
-### Example
+### Usage
+##### Example
 ```
 Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output
 ```
