@@ -106,7 +106,7 @@ Rscript src/scTPA.R -h
     --imputation=IMPUTATION
         Imputation method. Available options are 'scImpute' or 'none'. 'scImpute': impute scRNA-seq profile using scImpute R package. [default= none]
     --pathway_database=PATHWAY_DATABASE
-        Pathway database. Avalible database are avalible on https://github.com/sulab-wmu/scTPA#details [default= kegg]
+        Pathway database. Avalible database are avalible on https://github.com/sulab-wmu/scTPA [default= kegg]
     --user_pathway=USER_PATHWAY
         Optional. User defined pathway file in gmt format. [default = NULL]
     --pas_method=PAS_METHOD
