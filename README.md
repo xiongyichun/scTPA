@@ -1,6 +1,6 @@
-## What is [scTPA](http://sctpa.bio-data.cn/sctpa)
+# What is [scTPA local application]
 ### Introduction
-scTPA is a web tool for single-cell transcriptome analysis and annotation based on biological pathway activation in human and mice. We collected a large number of biological pathways with different functional and taxonomic classifications, which facilitates the identification of key pathway signatures for cell type annotation and interpretation.
+scTPA is the local tool for scTPA (http://sctpa.bio-data.cn/sctpa) single-cell transcriptome analysis and annotation based on biological pathway activation in human and mice. We collected a large number of biological pathways with different functional and taxonomic classifications, which facilitates the identification of key pathway signatures for cell type annotation and interpretation.
 
 ### What can scTPA do
 * Calculating pathway activity score of single cell
@@ -9,16 +9,16 @@ scTPA is a web tool for single-cell transcriptome analysis and annotation based 
 * Identifying significantly activated pathways of cell clusterings
 * Comparison analysis of the associated gene expression profiles of pathways
 
-## Usage
+# Installation and Usage
 ### Install
-* **step1 Download scTPA**
+#####step1 Download scTPA
 scTPA local application can be download directly by
 ```
 wget http://sctpa.bio-data.cn:8888/sctpa/resources/scTPA_local-v7.zip
 unzip scTPA_local-v7.zip
 cd scTPA_local-v7
 ```
-* **step2 Install dependent R packages**
+#####step2 Install dependent R packages
 To install this packages, start "R" and enter:
 ```
 install.packages('p2data', repos='https://kharchenkolab.github.io/drat/', type='source')
@@ -50,7 +50,7 @@ BiocManager::install("AUCell")
 BiocManager::install("Cairo")
 BiocManager::install("scde")
 ```
-* **step3 Install dependent Python packages**
+#####step3 Install dependent Python packages
 ```
 pip install pandas==0.25.3
 pip install numpy
@@ -65,6 +65,15 @@ pip install multiprocessing
 Rscript src/scTPA.R -f example/scRNA_UMI_count.csv --cellType example/cell_type.csv --idType symbol --normalize none --min_cells 3 --min_features 200 --species homo --imputation TRUE --data_type count --pathway_database c2.kegg --topo FALSE --user_pathway NULL --para_size 3 --pas_method pagoda2 --cluster_method seurat --seurat_resolution 0.5 --seurat_dims 15 --k_cluster 5 --min_pts 3 --dims 20 --marker_method wilcox --logFC_thre 0.25 --min_pct 0.1 -o test/test_output
 ```
 Once the program has run successfully, a series of results files and folders will appear in the results folder.
+The results can be found at the directory **test/test_output**,  The file organization is as follows: 
+```
++--app.exe          //double click to visualize the results.
++--data
+   +--app.js
+   +--bin
+   +--node_modules
+   +--content       //Result files and pictures where they are stored.
+```
 
 ### Help Information
 ```
@@ -120,7 +129,7 @@ Options:
         Show this help message and exit
 ```
 
-#### Details for Specific Parameter
+#### Details for Specific Parameters
 **`--normalize`:**
 ***log:*** Log transform. Feature counts output for each cell is divided by the total counts for that cell and multiplied by 1e4. This is then natural-log transformed.
 ***CLR:*** Centered log ratio. A commonly used Compositional Data Analysis (CoDA) transformation method.
