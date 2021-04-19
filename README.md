@@ -84,7 +84,7 @@ The results can be found at the directory **test/test_output_e1** or **test/test
 Rscript src/scTPA.R -h
 ```
 
-##### **Required Options:**
+##### **Required parameters:**
 ```
     -f FILE, --file=FILE
        Gene expression profile, genes X cells. The processed gene expression profile can be generated using different platforms, such as 10X genomics and Smart-seq. The values in this profile should be non-negative, and this file can be uploaded depending on data types of UMI count, read count, RPKM, FPKM, CPM or TPM. [default= NULL]
@@ -94,7 +94,7 @@ Rscript src/scTPA.R -h
         "Species. Available options are 'homo' or 'mus'. [default= homo]
 ```
 
-##### **Required Options:**
+##### **Optional parameters:**
 ```
     --cellType=CELLTYPE
         Optional. Cell type file. First column is cell name (same as the colnames of gene expression profile), second column is cell type. No header names. [default= NULL]
