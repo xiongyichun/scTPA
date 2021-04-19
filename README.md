@@ -105,7 +105,6 @@ Rscript src/scTPA.R -h
         Cells must have at least the minimum number of genes. Used for filtering cells. [default= 200]
     --imputation=IMPUTATION
         Imputation method. Available options are 'scImpute' or 'none'. 'scImpute': impute scRNA-seq profile using scImpute R package. [default= none]
-    
     --pathway_database=PATHWAY_DATABASE
         Pathway database. Avalible database are avalible on https://github.com/sulab-wmu/scTPA#details [default= kegg]
     --user_pathway=USER_PATHWAY
